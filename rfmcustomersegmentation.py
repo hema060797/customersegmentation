@@ -1,27 +1,15 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Wed May 27 17:49:42 2020
-
-@author: hemahemu
-"""
-
-
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib as mpl
 import seaborn as sns
 from datetime import timedelta
-#import plotly.graph_objs as go
-#from plotly.offline import init_notebook_mode,iplot
-#import warnings
-#warnings.filterwarnings('ignore')
-df1=pd.read_csv('G:/Machine learning projects/Customer segmentation-finalyearproject/year2009-10.csv',encoding='unicode_escape')
+df1=pd.read_csv('year2009-10.csv',encoding='unicode_escape')
 print(df1.head())
 print(df1.shape)
 print(df1.dtypes)
 print(df1.describe())
-df2=pd.read_csv('G:/Machine learning projects/Customer segmentation-finalyearproject/year2010-11.csv',encoding='unicode_escape')
+df2=pd.read_csv('year2010-11.csv',encoding='unicode_escape')
 print(df2.head())
 print(df2.shape)
 print(df2.dtypes)
@@ -459,7 +447,7 @@ rfm_cluster = rfm.groupby('Cluster_Id').agg({'Recency': ['max','mean', 'min'], '
 
 print(rfm_cluster)
 
-rfm_cluster.to_csv('G:/Machine learning projects/Customer segmentation-finalyearproject/rfm_cluster_summary.csv')
+rfm_cluster.to_csv('rfm_cluster_summary.csv')
 # Box plot to visualize Cluster Id vs Recency
 
 sns.boxplot(x='Cluster_Id', y='Recency', data=rfm)
@@ -510,7 +498,7 @@ rfm['Customer_type'] = rfm.apply(rfm_level, axis=1)
 print(rfm.head(10))
 print(rfm.shape)
 rfm.Customer_type.value_counts()
-rfm.to_csv('G:/Machine learning projects/Customer segmentation-finalyearproject/RFM_groupby_customerId.csv')
+rfm.to_csv('RFM_groupby_customerId.csv')
 
 
 
@@ -523,7 +511,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import classification_report
 from sklearn.metrics import confusion_matrix
-predictdf= pd.read_csv('G:/Machine learning projects/Customer segmentation-finalyearproject/RFM_groupby_customerId.csv')
+predictdf= pd.read_csv('RFM_groupby_customerId.csv')
 print(predictdf.head())
 predictdf.drop(columns=['Unnamed: 0'],axis=1,inplace=True)
 print(predictdf.shape)
